@@ -1,0 +1,138 @@
+<theme name = "Splice">
+<popup_style file_name="EOW.tar.gz" />
+<colors>
+	<color1 default="#ffffff" opacity="70" />
+	<color2 default="#e5e5e5" opacity="100" />
+	<color3 default="#00ffff" opacity="50" />
+	<color4 default="#a9a9a9" opacity="100" />
+	<color5 name="Not used" default="#000000" opacity="no" />
+    <color8 name="Attention Color" default="#FF0000" opacity="100"/>
+</colors>
+
+<pixmaps>
+	<pixmap_from_file name="button1" file="button.png" />
+	<pixmap_from_file name="button2" file="button2.png" />
+	<pixmap_from_file name="button3" file="button3.png" />
+	<pixmap_from_file name="button-a" file="button-active.png" />
+	<pixmap_from_file name="button2-a" file="button2-active.png" />
+	<pixmap_from_file name="button3-a" file="button3-active.png" />
+	<pixmap_from_file name="launching" file="launching.png" />
+	<pixmap_from_file name="launching2" file="launching2.png" />
+	<pixmap_from_file name="launching3" file="launching3.png" />
+	<pixmap_from_file name="launcher" file="launcher.png" />
+	<pixmap_from_file name="mask4" file="mask4.png" />
+</pixmaps>
+
+<sets>
+	<set name="as" left="90" right="-90" up="0" down="0" />
+	<set name="xo2" left="0" right="0" down="-5%" up="-5%" />
+	<set name="xo3" left="0" right="0" down="-7.5%" up="-7.5%" />
+	<set name="yo2" left="-5%" right="5%" down="0" up="0" />
+	<set name="yo3" left="-7.5%" right="7.5%" down="0" up="0" />
+</sets>
+
+<button_pixmap gap = "5" aspect_ratio="115/99" aspect_ratio_v="99/115" windows_cnt="3">
+	<get_icon size="-10" />
+	<correct_size />
+	<if type="!launcher">
+	<if type="!launching">
+		<if type="all_minimized">
+    	    <pixmap name="attention_box">
+    	        <fill color="color1" opacity="color1"/>
+    	        <alpha_mask mask="button1"/>
+    	    </pixmap>
+    	    <composite bg="attention_box" fg="self"/>
+		</if>
+		<if type="blink">
+    	    <pixmap name="attention_box">
+    	        <fill color="color8" opacity="color8"/>
+    	        <alpha_mask mask="mask4"/>
+    	    </pixmap>
+    	    <composite bg="attention_box" fg="self"/>
+		</if>
+		<if type="needs_attention">
+    	    <pixmap name="attention_box">
+    	        <fill color="color8" opacity="color8"/>
+    	        <alpha_mask mask="mask4"/>
+    	    </pixmap>
+    	    <composite bg="attention_box" fg="self"/>
+		</if>
+		<if windows="1">
+			<pixmap name="button1r">
+				<clear />
+				<composite bg="self" fg="button1" angle="as" />
+			</pixmap>
+			<if type="!active">
+				<composite bg="button1r" fg="self" />
+			</if>
+			<pixmap name="button-ar">
+				<clear />
+				<composite bg="self" fg="button-a" angle="as" />
+			</pixmap>
+			<if type="active">
+				<composite bg="button-ar" fg="self" />
+			</if>
+		</if>
+		<if windows="2">
+			<pixmap name="button2r">
+				<clear />
+				<composite bg="self" fg="button2" angle="as" />
+			</pixmap>
+			<if type="!active">
+				<composite bg="button2r" fg="self" />
+			</if>
+			<pixmap name="button2-ar">
+				<clear />
+				<composite bg="self" fg="button2-a" angle="as" />
+			</pixmap>
+			<if type="active">
+				<composite bg="button2-ar" fg="self" xoffset="xo2" yoffset="yo2" />
+			</if>
+		</if>
+		<if windows="3">
+			<pixmap name="button3r">
+				<clear />
+				<composite bg="self" fg="button3" angle="as" />
+			</pixmap>
+			<if type="!active">
+				<composite bg="button3r" fg="self" />
+			</if>
+			<pixmap name="button3-ar">
+				<clear />
+				<composite bg="self" fg="button3-a" angle="as" />
+			</pixmap>
+			<if type="active">
+				<composite bg="button3-ar" fg="self" xoffset="xo3" yoffset="yo3" />
+			</if>
+		</if>
+	</if>
+	</if>
+	<if type="mouse_over">
+		<fill color="#FFFFFF" opacity="10" />
+	</if>
+	<if type="launching">
+		<if windows="0">
+			<pixmap name="launchingr">
+				<clear />
+				<composite bg="self" fg="launching" angle="as" />
+			</pixmap>
+			<composite bg="launchingr" fg="self" />
+		</if>
+		<if windows="1">
+			<pixmap name="launching2r">
+				<clear />
+				<composite bg="self" fg="launching2" angle="as" />
+			</pixmap>
+			<composite bg="launching2r" fg="self" />
+		</if>
+		<if windows="2:">
+			<pixmap name="launching3r">
+				<clear />
+				<composite bg="self" fg="launching3" angle="as" />
+			</pixmap>
+			<composite bg="launching3r" fg="self" />
+		</if>
+	</if>
+	
+</button_pixmap>
+</theme>
